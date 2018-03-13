@@ -2301,6 +2301,30 @@ describe('getDayViewHourGrid', () => {
     jsDate: Date;
   }
 
+  it('should render all hours per day independent on daylight saving time', () => {
+    const viewDate: Date = new Date('2018-03-25');
+    const startOfViewDate: Date = startOfDay(viewDate);
+    const result: DayViewHour[] = getDayViewHourGrid({
+      viewDate,
+      hourSegments: 1,
+      dayStart: {
+        hour: 0,
+        minute: 0
+      },
+      dayEnd: {
+        hour: 3,
+        minute: 1
+      }
+    });
+
+    for (let hour = 0; hour < result.length; hour++) {
+      expect(result[hour].segments[0].date.toISOString()).to.equal(
+        setHours(startOfViewDate, hour).toISOString()
+      );
+    }
+    expect(result.length).to.equal(4);
+  });
+
   it('should get the day view segments respecting the start and end of the day', () => {
     const result: DayViewHour[] = getDayViewHourGrid({
       viewDate: new Date(),
