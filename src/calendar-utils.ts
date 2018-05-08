@@ -655,9 +655,6 @@ export function getDayView({
   });
 
   const dayViewEvents: DayViewEvent[] = eventsInPeriod
-    .sort((eventA: CalendarEvent, eventB: CalendarEvent) => {
-      return eventA.start.valueOf() - eventB.start.valueOf();
-    })
     .map((event: CalendarEvent) => {
       const eventStart: Date = event.start;
       const eventEnd: Date = event.end || eventStart;
