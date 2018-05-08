@@ -1,5 +1,5 @@
 {
-  "name": "calendar-utils",
+  "name": "kaloyan-calendar-utils",
   "version": "0.1.2",
   "description": "Utility functions to generate views for calendars",
   "main": "dist/umd/calendar-utils.js",
